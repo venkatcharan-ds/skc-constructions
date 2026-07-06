@@ -1,0 +1,226 @@
+export const SITE = {
+  name: "SKC Construction",
+  tagline: "Building Tomorrow With Strength & Precision",
+  phones: [
+    { display: "98888 82882", tel: "+919888882882", whatsapp: "919888882882" },
+    { display: "91000 99990", tel: "+919100099990", whatsapp: "919100099990" },
+  ],
+  email: "skcconstruction0605@gmail.com",
+  whatsappMessage:
+    "Hello SKC Construction, I visited your website and would like to know more about your services.",
+};
+
+export const whatsappLink = (whatsapp) =>
+  `https://wa.me/${whatsapp}?text=${encodeURIComponent(SITE.whatsappMessage)}`;
+
+export const NAV_LINKS = [
+  { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
+  { label: "Projects", href: "#projects" },
+  { label: "Process", href: "#process" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "Contact", href: "#contact" },
+];
+
+export const SERVICES = [
+  {
+    title: "Residential Construction",
+    description:
+      "Bespoke homes and residential complexes engineered for comfort, safety and lasting value.",
+    icon: "home",
+  },
+  {
+    title: "Commercial Construction",
+    description:
+      "Offices, retail and hospitality spaces built to elevate brands and business performance.",
+    icon: "building",
+  },
+  {
+    title: "Industrial Construction",
+    description:
+      "Factories, warehouses and industrial facilities engineered for scale and efficiency.",
+    icon: "factory",
+  },
+  {
+    title: "Renovation",
+    description:
+      "Transforming existing structures with precision upgrades and modern finishes.",
+    icon: "hammer",
+  },
+  {
+    title: "Turnkey Projects",
+    description:
+      "End-to-end delivery from design to handover, managed under one accountable roof.",
+    icon: "key",
+  },
+  {
+    title: "Civil Engineering",
+    description:
+      "Infrastructure and civil works grounded in rigorous engineering standards.",
+    icon: "ruler",
+  },
+];
+
+export const WHY_CHOOSE_US = [
+  {
+    title: "Government Registered",
+    description: "A fully compliant, government registered construction company.",
+    icon: "shield",
+  },
+  {
+    title: "Experienced Engineers",
+    description: "A seasoned team of engineers and project managers on every site.",
+    icon: "users",
+  },
+  {
+    title: "Quality Materials",
+    description: "Only certified, high-grade materials sourced for durability.",
+    icon: "gem",
+  },
+  {
+    title: "On-Time Delivery",
+    description: "Disciplined project timelines with milestone-driven execution.",
+    icon: "clock",
+  },
+  {
+    title: "Transparent Pricing",
+    description: "Clear, itemised estimates with zero hidden costs.",
+    icon: "receipt",
+  },
+];
+
+export const PROJECTS = [
+  {
+    title: "Skyline Residency",
+    category: "Residential",
+    image: "/images/download1.webp",
+    thumb: "/images/download1-thumb.webp",
+  },
+  {
+    title: "Vertex Business Park",
+    category: "Commercial",
+    image: "/images/download2.webp",
+    thumb: "/images/download2-thumb.webp",
+  },
+  {
+    title: "Ironforge Industrial Yard",
+    category: "Industrial",
+    image: "/images/download3.webp",
+    thumb: "/images/download3-thumb.webp",
+  },
+  {
+    title: "Aurelia Towers",
+    category: "Residential",
+    image: "/images/download4.webp",
+    thumb: "/images/download4-thumb.webp",
+  },
+  {
+    title: "Crestline Infrastructure",
+    category: "Infrastructure",
+    image: "/images/download5.webp",
+    thumb: "/images/download5-thumb.webp",
+  },
+  {
+    title: "Meridian Corporate Hub",
+    category: "Commercial",
+    image: "/images/download6.webp",
+    thumb: "/images/download6-thumb.webp",
+  },
+  {
+    title: "Foundry Works Complex",
+    category: "Industrial",
+    image: "/images/download7.webp",
+    thumb: "/images/download7-thumb.webp",
+  },
+  {
+    title: "Elevate Renovation Project",
+    category: "Renovation",
+    image: "/images/download8.webp",
+    thumb: "/images/download8-thumb.webp",
+  },
+];
+
+export const PROCESS_STEPS = [
+  {
+    title: "Planning",
+    description: "Site analysis, design consultation and regulatory approvals.",
+  },
+  {
+    title: "Foundation",
+    description: "Precision excavation and structural foundation engineering.",
+  },
+  {
+    title: "Construction",
+    description: "Disciplined execution across structure, MEP and civil works.",
+  },
+  {
+    title: "Finishing",
+    description: "Premium interiors, facades and final quality inspections.",
+  },
+  {
+    title: "Delivery",
+    description: "Handover with complete documentation and after-care support.",
+  },
+];
+
+export const STATISTICS = [
+  { value: 12, suffix: "+", label: "Years of Experience" },
+  { value: 250, suffix: "+", label: "Projects Delivered" },
+  { value: 40, suffix: "+", label: "Expert Engineers" },
+  { value: 98, suffix: "%", label: "Client Satisfaction" },
+];
+
+export const TESTIMONIALS = [
+  {
+    name: "Rajesh Kumar",
+    role: "Residential Client",
+    quote:
+      "SKC Construction delivered our dream home on time with exceptional quality. Their attention to detail is unmatched.",
+  },
+  {
+    name: "Priya Sharma",
+    role: "Commercial Developer",
+    quote:
+      "From planning to handover, the team was transparent, professional and precise. Highly recommended for large-scale projects.",
+  },
+  {
+    name: "Arun Verma",
+    role: "Industrial Client",
+    quote:
+      "Their engineering expertise and on-time delivery made our factory expansion completely stress-free.",
+  },
+  {
+    name: "Meena Iyer",
+    role: "Renovation Client",
+    quote:
+      "They transformed our ageing property into a modern masterpiece without a single delay or surprise cost.",
+  },
+];
+
+export const FAQS = [
+  {
+    question: "Is SKC Construction a registered company?",
+    answer:
+      "Yes, SKC Construction is a government registered construction company operating in full regulatory compliance.",
+  },
+  {
+    question: "What types of projects do you undertake?",
+    answer:
+      "We deliver residential, commercial, industrial and infrastructure construction, along with renovation and turnkey projects.",
+  },
+  {
+    question: "Do you provide free quotes?",
+    answer:
+      "Yes, we offer a free, no-obligation quote for every project. Reach out via call, WhatsApp or our contact form.",
+  },
+  {
+    question: "How do you ensure on-time delivery?",
+    answer:
+      "We follow milestone-driven project management with experienced engineers overseeing every phase of construction.",
+  },
+  {
+    question: "Do you handle civil engineering and infrastructure works?",
+    answer:
+      "Yes, our civil engineering division handles infrastructure works grounded in rigorous engineering standards.",
+  },
+];
