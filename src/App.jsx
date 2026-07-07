@@ -16,6 +16,7 @@ import Contact from "./components/sections/Contact";
 import useLenis from "./hooks/useLenis";
 
 const Testimonials = lazy(() => import("./components/sections/Testimonials"));
+const Certifications = lazy(() => import("./components/sections/Certifications"));
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -36,6 +37,9 @@ function App() {
         <About />
         <Services />
         <WhyChooseUs />
+        <Suspense fallback={null}>
+          <Certifications />
+        </Suspense>
         <Projects />
         <Process />
         <Statistics />

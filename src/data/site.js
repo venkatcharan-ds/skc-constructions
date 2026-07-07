@@ -27,6 +27,7 @@ export const mapsDirectionsLink = (query) =>
 export const NAV_LINKS = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
+  { label: "Certifications", href: "#certifications" },
   { label: "Projects", href: "#projects" },
   { label: "Process", href: "#process" },
   { label: "Testimonials", href: "#testimonials" },
@@ -205,6 +206,101 @@ export const TESTIMONIALS = [
     role: "Renovation Client",
     quote:
       "They transformed our ageing property into a modern masterpiece without a single delay or surprise cost.",
+  },
+];
+
+export const TRUST_BADGES = [
+  "Government Registered",
+  "MSME Registered",
+  "GST Registered",
+  "Telangana Registered",
+  "Legally Compliant",
+  "Trusted Construction Company",
+];
+
+export const CERTIFICATES = [
+  {
+    id: "udyam",
+    name: "Udyam / MSME Registration Certificate",
+    authority: "Ministry of MSME, Government of India",
+    number: "UDYAM-TS-02-0225945",
+    date: "03 March 2025",
+    description:
+      "SKC Construction is recognised as a Micro Enterprise under the Udyam Registration scheme by the Ministry of Micro, Small and Medium Enterprises.",
+    file: "/documents/udyam-msme-certificate.pdf",
+    fileName: "SKC-Construction-Udyam-MSME-Certificate.pdf",
+  },
+  {
+    id: "gst",
+    name: "GST Registration Certificate",
+    authority: "Goods and Services Tax Network, Government of India",
+    number: "GSTIN 36RCQPS8013G1ZS",
+    date: "19 March 2025",
+    description:
+      "Registered under the Goods and Services Tax Act as a Regular taxpayer, authorised to lawfully operate and invoice across India.",
+    file: "/documents/gst-registration-certificate.pdf",
+    fileName: "SKC-Construction-GST-Certificate.pdf",
+  },
+  {
+    id: "telangana",
+    name: "Telangana Shops & Establishment Certificate",
+    authority: "Labour Department, Government of Telangana",
+    number: "Reg. No. SEA/HYD/DCL/H1/1057546/2025",
+    date: "01 March 2025",
+    description:
+      "Registered as a Shop/Establishment under the Telangana Shops & Establishments Act, 1988, permitting formal business operations in the state.",
+    file: "/documents/telangana-shops-establishment-certificate.pdf",
+    fileName: "SKC-Construction-Telangana-Registration-Certificate.pdf",
+  },
+];
+
+export const COMPANY_INFO = [
+  { label: "Registered Company Name", value: "SKC Construction" },
+  { label: "Proprietor", value: "Mohammed Irfan Sheik" },
+  { label: "Enterprise Type", value: "Micro Enterprise (Udyam Classification)" },
+  { label: "Type of Organisation", value: "Proprietorship" },
+  { label: "Nature of Business", value: "Construction of Buildings" },
+  { label: "Date of Establishment", value: "1 March 2025" },
+  { label: "Udyam / MSME Registration", value: "UDYAM-TS-02-0225945" },
+  { label: "GST Registration (GSTIN)", value: "36RCQPS8013G1ZS" },
+  {
+    label: "Telangana Shops & Establishment Reg. No.",
+    value: "SEA/HYD/DCL/H1/1057546/2025",
+  },
+  {
+    label: "Registered Address",
+    value: "9-6-76, Anjaiah Nagar, Hasmathpet, New Bowenpally, Hyderabad, Telangana 500009",
+  },
+  { label: "Contact Numbers", value: "+91 98888 82882 / +91 91000 99990" },
+  { label: "Email", value: "skcconstruction0605@gmail.com" },
+];
+
+export const REGISTRATION_TIMELINE = [
+  {
+    year: "2025",
+    title: "Company Started",
+    date: "1 March 2025",
+    description: "SKC Construction commenced official business operations in Hyderabad, Telangana.",
+  },
+  {
+    title: "Government Registration",
+    date: "1 March 2025",
+    description: "Registered as a Shop/Establishment under the Telangana Shops & Establishments Act, 1988.",
+  },
+  {
+    title: "MSME Registration",
+    date: "3 March 2025",
+    description: "Recognised as a Micro Enterprise under the Udyam Registration scheme, Ministry of MSME.",
+  },
+  {
+    title: "GST Registration",
+    date: "19 March 2025",
+    description: "Granted GST registration (GSTIN 36RCQPS8013G1ZS) for lawful tax compliance across India.",
+  },
+  {
+    title: "Official Business Operations",
+    date: "Ongoing",
+    description: "Fully compliant and operating as a government registered construction company.",
   },
 ];
 
