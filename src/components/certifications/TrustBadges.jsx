@@ -1,29 +1,18 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 import { FiCheckCircle } from "react-icons/fi";
 import { TRUST_BADGES } from "../../data/site";
 
-gsap.registerPlugin(ScrollTrigger);
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+};
+
+const badge = {
+  hidden: { opacity: 0, y: 24, scale: 0.85 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: [0.34, 1.56, 0.64, 1] } },
+};
 
 export default function TrustBadges() {
-  const rowRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".trust-badge", {
-        opacity: 0,
-        y: 24,
-        scale: 0.85,
-        duration: 0.7,
-        stagger: 0.08,
-        ease: "back.out(1.7)",
-        scrollTrigger: { trigger: rowRef.current, start: "top 85%" },
-      });
-    }, rowRef);
-    return () => ctx.revert();
-  }, []);
-
   return (
     <div className="text-center">
       <p className="eyebrow mb-4">Why Clients Trust Us</p>
@@ -31,18 +20,25 @@ export default function TrustBadges() {
         Why Clients Trust SKC Construction
       </h2>
 
-      <div ref={rowRef} className="mt-10 flex flex-wrap justify-center gap-4">
-        {TRUST_BADGES.map((badge) => (
-          <span
-            key={badge}
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        className="mt-10 flex flex-wrap justify-center gap-4"
+      >
+        {TRUST_BADGES.map((label) => (
+          <motion.span
+            key={label}
+            variants={badge}
             data-cursor="hover"
-            className="trust-badge glass-panel inline-flex items-center gap-2 rounded-full px-5 py-3 text-xs font-medium uppercase tracking-widest text-white/80 transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:text-gold"
+            className="glass-panel inline-flex items-center gap-2 rounded-full px-5 py-3 text-xs font-medium uppercase tracking-widest text-white/80 transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:text-gold"
           >
             <FiCheckCircle className="text-gold" />
-            {badge}
-          </span>
+            {label}
+          </motion.span>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }

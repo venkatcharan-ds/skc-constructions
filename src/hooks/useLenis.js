@@ -20,9 +20,26 @@ export default function useLenis() {
     });
     gsap.ticker.lagSmoothing(0);
 
+    // Web fonts swapping in (and React.lazy chunks mounting) reflow the page
+    // after ScrollTrigger has already measured it, leaving later triggers
+    // positioned against a shorter/differently-wrapped document — which is
+    // why sections further down can get stuck mid-reveal. Resync once each
+    // signal fires; none of these overlap with a tween actively playing
+    // since they all resolve well before the user can scroll that far.
+    let cancelled = false;
+    const refresh = () => {
+      if (!cancelled) ScrollTrigger.refresh();
+    };
+    document.fonts?.ready?.then(refresh);
+    window.addEventListener("load", refresh);
+    const fallbackTimeout = setTimeout(refresh, 2000);
+
     return () => {
+      cancelled = true;
       lenis.destroy();
       gsap.ticker.remove(lenis.raf);
+      window.removeEventListener("load", refresh);
+      clearTimeout(fallbackTimeout);
     };
   }, []);
 }

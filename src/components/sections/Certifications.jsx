@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import TrustBadges from "../certifications/TrustBadges";
 import CertificateCard from "../certifications/CertificateCard";
 import CompanyInfo from "../certifications/CompanyInfo";
@@ -9,26 +8,18 @@ import DocumentShowcase from "../certifications/DocumentShowcase";
 import CertificateLightbox from "../ui/CertificateLightbox";
 import { CERTIFICATES } from "../../data/site";
 
-gsap.registerPlugin(ScrollTrigger);
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.15 } },
+};
+
+const card = {
+  hidden: { opacity: 0, y: 50, scale: 0.92 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, ease: "easeOut" } },
+};
 
 export default function Certifications() {
-  const cardsRef = useRef(null);
   const [activeCertificate, setActiveCertificate] = useState(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".certificate-card", {
-        opacity: 0,
-        y: 50,
-        scale: 0.92,
-        duration: 0.9,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: { trigger: cardsRef.current, start: "top 75%" },
-      });
-    }, cardsRef);
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section id="certifications" className="relative overflow-hidden bg-ink py-28 md:py-36">
@@ -49,16 +40,23 @@ export default function Certifications() {
             </p>
           </div>
 
-          <div ref={cardsRef} className="mt-14 grid gap-6 lg:grid-cols-3">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            className="mt-14 grid gap-6 lg:grid-cols-3"
+          >
             {CERTIFICATES.map((certificate, i) => (
-              <CertificateCard
-                key={certificate.id}
-                certificate={certificate}
-                index={i}
-                onView={setActiveCertificate}
-              />
+              <motion.div key={certificate.id} variants={card}>
+                <CertificateCard
+                  certificate={certificate}
+                  index={i}
+                  onView={setActiveCertificate}
+                />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         <CompanyInfo />

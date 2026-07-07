@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 import { REGISTRATION_TIMELINE } from "../../data/site";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -9,6 +10,9 @@ export default function RegistrationTimeline() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    // Scrub-linked, so it self-corrects every frame against the live scroll
+    // position instead of depending on a start/end measured once — safe even
+    // if this lazy-loaded section shifts the page height after mounting.
     const ctx = gsap.context(() => {
       gsap.from(".timeline-line", {
         scaleY: 0,
@@ -20,16 +24,6 @@ export default function RegistrationTimeline() {
           end: "bottom 80%",
           scrub: 0.6,
         },
-      });
-
-      gsap.utils.toArray(".timeline-item").forEach((item, i) => {
-        gsap.from(item, {
-          opacity: 0,
-          x: i % 2 === 0 ? -40 : 40,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: { trigger: item, start: "top 85%" },
-        });
       });
     }, sectionRef);
     return () => ctx.revert();
@@ -51,9 +45,13 @@ export default function RegistrationTimeline() {
 
         <div className="flex flex-col gap-10">
           {REGISTRATION_TIMELINE.map((item, i) => (
-            <div
+            <motion.div
               key={item.title}
-              className={`timeline-item relative flex flex-col gap-3 pl-12 sm:w-1/2 sm:pl-0 ${
+              initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className={`relative flex flex-col gap-3 pl-12 sm:w-1/2 sm:pl-0 ${
                 i % 2 === 0
                   ? "sm:mr-auto sm:pr-12 sm:text-right"
                   : "sm:ml-auto sm:pl-12"
@@ -72,7 +70,7 @@ export default function RegistrationTimeline() {
               <h3 className="font-display text-lg font-semibold">{item.title}</h3>
               <p className="text-xs uppercase tracking-widest text-white/40">{item.date}</p>
               <p className="text-sm leading-relaxed text-white/60">{item.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
