@@ -51,9 +51,9 @@ export default function About() {
       <div className="container-shell grid items-center gap-16 lg:grid-cols-2">
         <div ref={imgWrapRef} className="about-reveal relative aspect-[4/5] overflow-hidden rounded-2xl">
           <img
-            src="/images/download2.webp"
+            src="/images/skc2.webp"
             alt="SKC Construction project under construction"
-            className="about-parallax h-[112%] w-full object-cover"
+            className="about-parallax h-[112%] w-full object-cover object-bottom"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />

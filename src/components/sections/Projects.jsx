@@ -15,6 +15,8 @@ const SPANS = [
   "",
   "lg:row-span-2",
   "",
+  "",
+  "lg:row-span-2",
 ];
 
 export default function Projects() {
