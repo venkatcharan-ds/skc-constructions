@@ -38,38 +38,50 @@ export const SERVICES = [
   {
     title: "Residential Construction",
     description:
-      "Bespoke homes and residential complexes engineered for comfort, safety and lasting value.",
+      "Premium villas, independent homes, gated communities and apartment construction with superior quality and modern engineering.",
     icon: "home",
   },
   {
     title: "Commercial Construction",
     description:
-      "Offices, retail and hospitality spaces built to elevate brands and business performance.",
+      "Office buildings, shopping complexes, hotels, hospitals and commercial spaces built for long-term performance.",
     icon: "building",
   },
   {
     title: "Industrial Construction",
     description:
-      "Factories, warehouses and industrial facilities engineered for scale and efficiency.",
+      "Factories, warehouses, industrial sheds, manufacturing plants and heavy-duty industrial infrastructure.",
     icon: "factory",
   },
   {
-    title: "Renovation",
+    title: "Road Construction",
     description:
-      "Transforming existing structures with precision upgrades and modern finishes.",
-    icon: "hammer",
+      "Concrete roads, internal roads, highways, access roads, drainage systems and complete road infrastructure projects.",
+    icon: "road",
   },
   {
-    title: "Turnkey Projects",
+    title: "Boundary Walls & Compound Walls",
     description:
-      "End-to-end delivery from design to handover, managed under one accountable roof.",
+      "RCC boundary walls, security walls, industrial compound walls, retaining walls and large-scale perimeter construction.",
+    icon: "wall",
+  },
+  {
+    title: "Water Tanks & RCC Structures",
+    description:
+      "Overhead water tanks, underground reservoirs, RCC tanks, cement storage structures and heavy reinforced concrete works.",
+    icon: "tank",
+  },
+  {
+    title: "Bridge Construction",
+    description:
+      "Road bridges, culverts, flyovers, pedestrian bridges and reinforced concrete bridge structures built to engineering standards.",
+    icon: "bridge",
+  },
+  {
+    title: "Turnkey EPC Projects",
+    description:
+      "Complete planning, engineering, project management, construction, finishing and handover under one roof.",
     icon: "key",
-  },
-  {
-    title: "Civil Engineering",
-    description:
-      "Infrastructure and civil works grounded in rigorous engineering standards.",
-    icon: "ruler",
   },
 ];
 
