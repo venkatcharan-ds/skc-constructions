@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { FiPhone, FiMail, FiMapPin, FiSend } from "react-icons/fi";
+import { FiPhone, FiMail, FiMapPin, FiSend, FiExternalLink } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import MagneticButton from "../ui/MagneticButton";
-import { SITE, whatsappLink } from "../../data/site";
+import { SITE, whatsappLink, mapsEmbedSrc, mapsDirectionsLink } from "../../data/site";
 
 export default function Contact() {
   const [status, setStatus] = useState("idle");
@@ -64,8 +64,9 @@ export default function Contact() {
                 <FiMapPin />
               </span>
               <div>
-                <p className="text-xs uppercase tracking-widest text-white/50">Location</p>
-                <p className="mt-1 font-display text-lg">Serving Clients Across India</p>
+                <p className="text-xs uppercase tracking-widest text-white/50">Visit Us</p>
+                <p className="mt-1 font-display text-lg leading-snug">{SITE.address.line1}</p>
+                <p className="text-sm text-white/60">{SITE.address.line2}</p>
               </div>
             </div>
 
@@ -85,18 +86,6 @@ export default function Contact() {
                   </a>
                 ))}
               </div>
-            </div>
-
-            <div className="mt-2 overflow-hidden rounded-xl border border-white/10">
-              <iframe
-                title="SKC Construction Location Map"
-                src="https://www.google.com/maps?q=India&output=embed"
-                width="100%"
-                height="220"
-                style={{ border: 0 }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
             </div>
           </div>
 
@@ -167,6 +156,45 @@ export default function Contact() {
               </p>
             )}
           </form>
+        </div>
+
+        <div className="group relative mt-8 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-2 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)] backdrop-blur-xl">
+          <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-gold/15 via-transparent to-transparent opacity-60" />
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl sm:aspect-[21/9]">
+            <iframe
+              title="SKC Construction Location Map"
+              src={mapsEmbedSrc(SITE.address.full)}
+              className="absolute inset-0 h-full w-full grayscale-[15%] contrast-[1.05]"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+            <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10" />
+
+            <div className="glass-panel pointer-events-auto absolute bottom-4 left-4 right-4 flex flex-col gap-3 rounded-xl p-4 sm:bottom-6 sm:left-6 sm:right-auto sm:max-w-sm sm:p-5">
+              <div className="flex items-start gap-3">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gold/15 text-lg text-gold">
+                  <FiMapPin />
+                </span>
+                <div>
+                  <p className="font-display text-sm font-semibold">SKC Construction</p>
+                  <p className="mt-1 text-xs leading-relaxed text-white/60">
+                    {SITE.address.line1}, {SITE.address.line2}
+                  </p>
+                </div>
+              </div>
+              <a
+                href={mapsDirectionsLink(SITE.address.full)}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="hover"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-4 py-2 font-display text-xs font-semibold uppercase tracking-[0.15em] text-ink transition-transform hover:scale-[1.03]"
+              >
+                Get Directions <FiExternalLink />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

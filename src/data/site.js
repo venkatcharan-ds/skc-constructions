@@ -8,10 +8,21 @@ export const SITE = {
   email: "skcconstruction0605@gmail.com",
   whatsappMessage:
     "Hello SKC Construction, I visited your website and would like to know more about your services.",
+  address: {
+    line1: "9-6-76, Anjaiah Nagar, Hasmathpet",
+    line2: "New Bowenpally, Hyderabad, Telangana 500009, India",
+    full: "SKC Construction, 9-6-76, Anjaiah Nagar, Hasmathpet, New Bowenpally, Hyderabad, Telangana 500009, India",
+  },
 };
 
 export const whatsappLink = (whatsapp) =>
   `https://wa.me/${whatsapp}?text=${encodeURIComponent(SITE.whatsappMessage)}`;
+
+export const mapsEmbedSrc = (query) =>
+  `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+
+export const mapsDirectionsLink = (query) =>
+  `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(query)}`;
 
 export const NAV_LINKS = [
   { label: "About", href: "#about" },
