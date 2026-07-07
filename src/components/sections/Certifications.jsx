@@ -6,7 +6,6 @@ import CertificateCard from "../certifications/CertificateCard";
 import CompanyInfo from "../certifications/CompanyInfo";
 import RegistrationTimeline from "../certifications/RegistrationTimeline";
 import DocumentShowcase from "../certifications/DocumentShowcase";
-import DownloadDocuments from "../certifications/DownloadDocuments";
 import CertificateLightbox from "../ui/CertificateLightbox";
 import { CERTIFICATES } from "../../data/site";
 
@@ -67,8 +66,6 @@ export default function Certifications() {
         <RegistrationTimeline />
 
         <DocumentShowcase onView={setActiveCertificate} />
-
-        <DownloadDocuments />
       </div>
 
       <CertificateLightbox certificate={activeCertificate} onClose={() => setActiveCertificate(null)} />
