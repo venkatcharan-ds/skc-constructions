@@ -6,7 +6,7 @@ import AnimatedCounter from "../ui/AnimatedCounter";
 const HeroScene = lazy(() => import("../three/HeroScene"));
 
 const STATS = [
-  { value: 12, suffix: "+", label: "Years" },
+  { value: 25, suffix: "+", label: "Years" },
   { value: 250, suffix: "+", label: "Projects" },
   { value: 98, suffix: "%", label: "Satisfaction" },
 ];

@@ -176,7 +176,7 @@ export const PROCESS_STEPS = [
 ];
 
 export const STATISTICS = [
-  { value: 12, suffix: "+", label: "Years of Experience" },
+  { value: 25, suffix: "+", label: "Years of Experience" },
   { value: 250, suffix: "+", label: "Projects Delivered" },
   { value: 40, suffix: "+", label: "Expert Engineers" },
   { value: 98, suffix: "%", label: "Client Satisfaction" },

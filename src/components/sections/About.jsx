@@ -58,7 +58,7 @@ export default function About() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
           <div className="glass-panel absolute bottom-6 left-6 right-6 rounded-xl p-5">
-            <p className="font-display text-3xl font-semibold text-gold">12+</p>
+            <p className="font-display text-3xl font-semibold text-gold">25+</p>
             <p className="text-xs uppercase tracking-widest text-white/60">Years Building Excellence</p>
           </div>
         </div>
