@@ -284,7 +284,8 @@ export const COMPANY_INFO = [
   { label: "Enterprise Type", value: "Micro Enterprise (Udyam Classification)" },
   { label: "Type of Organisation", value: "Proprietorship" },
   { label: "Nature of Business", value: "Construction of Buildings" },
-  { label: "Date of Establishment", value: "1 March 2025" },
+  { label: "Founded", value: "1995" },
+  { label: "Shop & Establishment Registration Date", value: "1 March 2025" },
   { label: "Udyam / MSME Registration", value: "UDYAM-TS-02-0225945" },
   { label: "GST Registration (GSTIN)", value: "36RCQPS8013G1ZS" },
   {
@@ -299,32 +300,51 @@ export const COMPANY_INFO = [
   { label: "Email", value: "skcconstruction0605@gmail.com" },
 ];
 
+export const FOUNDED_YEAR = 1995;
+export const YEARS_OF_EXPERIENCE = 30;
+
 export const REGISTRATION_TIMELINE = [
   {
-    year: "2025",
-    title: "Company Started",
-    date: "1 March 2025",
-    description: "SKC Construction commenced official business operations in Hyderabad, Telangana.",
+    year: "1995",
+    title: "Company Established",
+    date: "1995",
+    description:
+      "SKC Construction began its journey in Hyderabad with a vision of delivering high-quality construction and civil engineering projects. Since then, the company has successfully completed residential, commercial, industrial and infrastructure works across Telangana.",
+    hero: true,
   },
   {
-    title: "Government Registration",
-    date: "1 March 2025",
-    description: "Registered as a Shop/Establishment under the Telangana Shops & Establishments Act, 1988.",
+    title: "30+ Years of Experience",
+    date: "1995 – Present",
+    description:
+      "Over three decades of expertise in construction, RCC works, road construction, boundary walls, water tanks, bridge works, industrial structures, commercial projects and residential developments.",
+    counter: true,
   },
   {
-    title: "MSME Registration",
-    date: "3 March 2025",
-    description: "Recognised as a Micro Enterprise under the Udyam Registration scheme, Ministry of MSME.",
+    title: "Business Modernization",
+    date: "2025",
+    description:
+      "The company strengthened its legal and compliance framework by obtaining official government registrations to expand operations and participate in larger private and government projects.",
+  },
+  {
+    title: "Telangana Registration",
+    date: "2025",
+    description: "Registered under the Telangana Shops & Establishments Act.",
+  },
+  {
+    title: "MSME (Udyam) Registration",
+    date: "2025",
+    description: "Officially recognized as a Government of India MSME Enterprise.",
   },
   {
     title: "GST Registration",
-    date: "19 March 2025",
-    description: "Granted GST registration (GSTIN 36RCQPS8013G1ZS) for lawful tax compliance across India.",
+    date: "2025",
+    description: "Obtained GST registration for nationwide tax compliance and business operations.",
   },
   {
-    title: "Official Business Operations",
-    date: "Ongoing",
-    description: "Fully compliant and operating as a government registered construction company.",
+    title: "Trusted Construction Company",
+    date: "Today",
+    description:
+      "Continuing to deliver premium residential, commercial, industrial, infrastructure, road, bridge, RCC, water tank and civil engineering projects with over 30 years of experience.",
   },
 ];
 
