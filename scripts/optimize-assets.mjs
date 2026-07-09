@@ -30,24 +30,33 @@ async function processLogo() {
     .resize(900, 502, { fit: "inside" })
     .webp({ quality: 90 })
     .toFile(path.join(DIRS.brand, "logo-full.webp"));
-  // Cropped icon-only mark for navbar/favicon (top ~62% of frame holds the emblem)
+
+  // Cropped icon-only mark: top ~62% of the frame holds the emblem, and it's
+  // horizontally centered in a narrow band — tighten the extract box around
+  // it instead of keeping the full (mostly empty) source width, then render
+  // at 2x for retina displays.
   const meta = await sharp(src).metadata();
   const cropHeight = Math.round(meta.height * 0.62);
+  const cropWidth = Math.round(meta.width * 0.51);
+  const cropLeft = Math.round((meta.width - cropWidth) / 2);
+  const markRegion = { left: cropLeft, top: 0, width: cropWidth, height: cropHeight };
+
   await sharp(src)
-    .extract({ left: 0, top: 0, width: meta.width, height: cropHeight })
-    .resize(400, null, { fit: "inside" })
+    .extract(markRegion)
+    .resize(900, null, { fit: "inside" })
     .webp({ quality: 92 })
     .toFile(path.join(DIRS.brand, "logo-mark.webp"));
-  await sharp(src)
-    .extract({ left: 0, top: 0, width: meta.width, height: cropHeight })
-    .resize(256, 256, { fit: "contain", background: { r: 17, g: 17, b: 17, alpha: 1 } })
-    .png()
-    .toFile(path.join(DIRS.brand, "favicon-256.png"));
-  await sharp(src)
-    .extract({ left: 0, top: 0, width: meta.width, height: cropHeight })
-    .resize(64, 64, { fit: "contain", background: { r: 17, g: 17, b: 17, alpha: 1 } })
-    .png()
-    .toFile(path.join(DIRS.brand, "favicon-64.png"));
+
+  const faviconSizes = [16, 32, 64, 180, 192, 512];
+  await Promise.all(
+    faviconSizes.map((size) =>
+      sharp(src)
+        .extract(markRegion)
+        .resize(size, size, { fit: "contain", background: { r: 17, g: 17, b: 17, alpha: 1 } })
+        .png()
+        .toFile(path.join(DIRS.brand, `favicon-${size}.png`))
+    )
+  );
   console.log("Logo assets ready");
 }
 
