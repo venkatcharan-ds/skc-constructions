@@ -1,17 +1,16 @@
 import { useEffect, useRef } from "react";
 
-// The intro film runs a few seconds; this is a floor, not a fixed length —
-// if it ends early we loop briefly rather than cut away too fast, and a
-// safety timeout guarantees we never get stuck if autoplay is blocked.
-const MIN_DISPLAY_MS = 2000;
-const SAFETY_TIMEOUT_MS = 4500;
+const FADE_MS = 800;
+// Purely a fallback if autoplay is blocked or playback stalls — the video
+// itself is always left to play through to its own natural end first, in
+// full, with no trimming or looping.
+const SAFETY_TIMEOUT_MS = 20000;
 
-export default function Loader({ onComplete }) {
+export default function Loader({ onComplete, src = "/video/loader-intro.mp4" }) {
   const rootRef = useRef(null);
   const videoRef = useRef(null);
 
   useEffect(() => {
-    const startedAt = performance.now();
     const video = videoRef.current;
     let finished = false;
     let safetyTimer;
@@ -25,28 +24,18 @@ export default function Loader({ onComplete }) {
         onComplete();
         return;
       }
-      root.style.transition = "opacity 0.9s ease-in-out";
+      root.style.transition = `opacity ${FADE_MS}ms ease-in-out`;
       root.style.opacity = "0";
-      setTimeout(onComplete, 900);
+      setTimeout(onComplete, FADE_MS);
     };
 
-    const handleEnded = () => {
-      const elapsed = performance.now() - startedAt;
-      if (elapsed < MIN_DISPLAY_MS && video) {
-        video.currentTime = 0;
-        video.play().catch(finish);
-      } else {
-        finish();
-      }
-    };
-
-    video?.addEventListener("ended", handleEnded);
+    video?.addEventListener("ended", finish);
     video?.play().catch(finish);
 
     safetyTimer = setTimeout(finish, SAFETY_TIMEOUT_MS);
 
     return () => {
-      video?.removeEventListener("ended", handleEnded);
+      video?.removeEventListener("ended", finish);
       clearTimeout(safetyTimer);
     };
   }, [onComplete]);
@@ -54,20 +43,32 @@ export default function Loader({ onComplete }) {
   return (
     <div
       ref={rootRef}
-      className="fixed inset-0 z-[1000] bg-black"
+      className="fixed inset-0 z-[1000] overflow-hidden bg-black"
+      style={{ willChange: "opacity" }}
       role="status"
+      aria-live="polite"
       aria-label="Loading SKC Construction"
     >
       <video
         ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover"
-        src="/video/loader-intro.mp4"
+        style={{ willChange: "transform", transform: "translateZ(0)" }}
+        src={src}
         autoPlay
         muted
         playsInline
         preload="auto"
         disablePictureInPicture
         aria-hidden="true"
+      />
+
+      {/* Subtle vignette blending the footage into the site's black/gold theme */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%)",
+        }}
       />
     </div>
   );
