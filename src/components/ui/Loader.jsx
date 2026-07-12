@@ -51,8 +51,12 @@ export default function Loader({ onComplete, src = "/video/loader-intro.mp4" }) 
     >
       <video
         ref={videoRef}
-        className="absolute inset-0 h-full w-full object-cover"
-        style={{ willChange: "transform", transform: "translateZ(0)" }}
+        className="absolute inset-0 block h-full w-full object-cover object-center"
+        style={{
+          willChange: "transform",
+          transform: "translateZ(0)",
+          backfaceVisibility: "hidden",
+        }}
         src={src}
         autoPlay
         muted
@@ -62,12 +66,13 @@ export default function Loader({ onComplete, src = "/video/loader-intro.mp4" }) 
         aria-hidden="true"
       />
 
-      {/* Subtle vignette blending the footage into the site's black/gold theme */}
+      {/* Corner-only vignette — center stays fully clear so it never softens
+          the footage itself, just grounds the frame edges into the theme. */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%)",
+            "radial-gradient(ellipse at center, transparent 70%, rgba(0,0,0,0.35) 100%)",
         }}
       />
     </div>
